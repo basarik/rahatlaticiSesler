@@ -1,0 +1,52 @@
+[
+  {
+    "id": 0,
+    "title": "Müzik 1",
+    "isFavourite": true
+  },
+  {
+    "id": 1,
+    "title": "Müzik 2",
+    "isFavourite": true
+  },
+  {
+    "id": 2,
+    "title": "Müzik 3",
+    "isFavourite": true
+  },
+  {
+    "id": 3,
+    "title": "Müzik 4",
+    "isFavourite": true
+  },
+  {
+    "id": 4,
+    "title": "Müzik 5",
+    "isFavourite": true
+  },
+  {
+    "id": 5,
+    "title": "Müzik 6",
+    "isFavourite": true
+  },
+  {
+    "id": 6,
+    "title": "Müzik 7",
+    "isFavourite": true
+  },
+  {
+    "id": 7,
+    "title": "Müzik 8",
+    "isFavourite": true
+  },
+  {
+    "id": 8,
+    "title": "Müzik 9",
+    "isFavourite": true
+  },
+  {
+    "id": 9,
+    "title": "Müzik 10",
+    "isFavourite": true
+  }
+]

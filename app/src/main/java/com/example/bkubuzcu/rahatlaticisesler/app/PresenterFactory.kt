@@ -3,11 +3,12 @@ package com.example.bkubuzcu.rahatlaticisesler.app
 import com.example.bkubuzcu.rahatlaticisesler.ui.CategoryContract
 import com.example.bkubuzcu.rahatlaticisesler.ui.CategoryPresenter
 import com.example.bkubuzcu.rahatlaticisesler.ui.CategoryRepository
+import com.example.bkubuzcu.rahatlaticisesler.ui.CategoryRepositoryImpl
 
 /**
  * Created by bkubuzcu on 26/09/18.
  */
-class PresenterFactory{
+open class PresenterFactory{
     fun categoryPresenter():CategoryContract.Presenter = CategoryPresenter(categoryRepository())
-    fun categoryRepository() = CategoryRepository(App.instance.service)
+    open fun categoryRepository(): CategoryRepository = CategoryRepositoryImpl(App.instance.service)
 }

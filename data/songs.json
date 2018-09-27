@@ -2,51 +2,61 @@
   {
     "id": 0,
     "title": "Müzik 1",
+    "category":0,
     "isFavourite": true
   },
   {
     "id": 1,
     "title": "Müzik 2",
+    "category":0,
     "isFavourite": false
   },
   {
     "id": 2,
     "title": "Müzik 3",
+    "category":0,
     "isFavourite": true
   },
   {
     "id": 3,
     "title": "Müzik 4",
+    "category":1,
     "isFavourite": true
   },
   {
     "id": 4,
     "title": "Müzik 5",
+    "category":1,
     "isFavourite": false
   },
   {
     "id": 5,
     "title": "Müzik 6",
+    "category":1,
     "isFavourite": true
   },
   {
     "id": 6,
     "title": "Müzik 7",
+    "category":1,
     "isFavourite": false
   },
   {
     "id": 7,
     "title": "Müzik 8",
+    "category":2,
     "isFavourite": false
   },
   {
     "id": 8,
     "title": "Müzik 9",
+    "category":2,
     "isFavourite": true
   },
   {
     "id": 9,
     "title": "Müzik 10",
+    "category":2,
     "isFavourite": true
   }
 ]

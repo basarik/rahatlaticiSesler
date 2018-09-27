@@ -24,7 +24,7 @@ class App : Application() {
                 .addInterceptor(logger)
                 .build()
         val retrofit = Retrofit.Builder()
-                .baseUrl("https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/assets/")
+                .baseUrl("https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

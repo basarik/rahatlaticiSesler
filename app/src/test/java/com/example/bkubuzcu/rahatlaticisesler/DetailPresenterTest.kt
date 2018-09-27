@@ -1,7 +1,7 @@
 package com.example.bkubuzcu.rahatlaticisesler
 
-import com.example.bkubuzcu.rahatlaticisesler.ui.category.CategoryContract
-import com.example.bkubuzcu.rahatlaticisesler.ui.category.CategoryPresenter
+import com.example.bkubuzcu.rahatlaticisesler.ui.detail.DetailContract
+import com.example.bkubuzcu.rahatlaticisesler.ui.detail.DetailPresenter
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -9,13 +9,12 @@ import org.junit.Before
 import org.junit.Test
 
 /**
- * Created by bkubuzcu on 26/09/18.
+ * Created by bkubuzcu on 28/09/18.
  */
-class CategoryPresenterTest {
-
-    private val view = mock<CategoryContract.View>()
-    private val repository = MockCategoryRepository()
-    private var presenter = CategoryPresenter(repository)
+class DetailPresenterTest {
+    private val view = mock<DetailContract.View>()
+    private val repository = MockDetailRepository()
+    private val presenter = DetailPresenter(repository)
 
 
     @Before
@@ -24,9 +23,9 @@ class CategoryPresenterTest {
     }
 
     @Test
-    fun categoryListFail() {
+    fun songListFail() {
         repository.isSuccess = false
-        presenter.getCategories()
+        presenter.getSongs(repository.category)
 
         verify(view).showProgress()
         verify(view).hideProgress()
@@ -34,13 +33,12 @@ class CategoryPresenterTest {
     }
 
     @Test
-    fun categoryListSuccess() {
+    fun songListSuccess() {
         repository.isSuccess = true
-        presenter.getCategories()
-
+        presenter.getSongs(repository.category)
         verify(view).showProgress()
         verify(view).hideProgress()
-        verify(view).onGetCategories(any())
+        verify(view).onGetSongs(any())
     }
 
 }

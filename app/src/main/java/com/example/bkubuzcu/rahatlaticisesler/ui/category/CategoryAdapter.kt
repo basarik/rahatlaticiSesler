@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.example.bkubuzcu.rahatlaticisesler.R
 import com.example.bkubuzcu.rahatlaticisesler.model.Category
 
-class CategoryAdapter(private val list: List<Category>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class CategoryAdapter(private val list: List<Category>, val listener: OnItemClickListener) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.row_category, parent, false)
@@ -16,8 +16,11 @@ class CategoryAdapter(private val list: List<Category>) : RecyclerView.Adapter<C
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val myModel = list[position]
-        holder.title.text = myModel.title
+        val category = list[position]
+        holder.title.text = category.title
+        holder.itemView.setOnClickListener({
+            listener.onItemClick(category)
+        })
     }
 
     override fun getItemCount(): Int {
@@ -27,5 +30,8 @@ class CategoryAdapter(private val list: List<Category>) : RecyclerView.Adapter<C
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.tvMain) as TextView
     }
+}
 
+interface OnItemClickListener {
+    fun onItemClick(category: Category)
 }

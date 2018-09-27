@@ -8,11 +8,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="55dp"
-        android:paddingLeft="25dp"
+        android:paddingTop="@dimen/dp_55"
+        android:paddingLeft="@dimen/dp_25"
         android:background="@color/colorAccent"
-        android:paddingBottom="10dp"
-        android:layout_margin="10dp"
+        android:paddingBottom="@dimen/dp_10"
+        android:layout_margin="@dimen/dp_10"
         android:id="@+id/tvMain"
         tools:text="@string/tools_category"
         />

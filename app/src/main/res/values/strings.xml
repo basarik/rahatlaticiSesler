@@ -6,4 +6,5 @@
     <string name="library">Kitaplık</string>
     <string name="title_category">Kitaplık</string>
     <string name="title_fav">Favoriler</string>
+    <string name="title_activity_detail">DetailActivity</string>
 </resources>

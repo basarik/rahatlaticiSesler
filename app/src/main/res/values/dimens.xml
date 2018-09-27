@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="dp_25">25dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_55">55dp</dimen>
+</resources>

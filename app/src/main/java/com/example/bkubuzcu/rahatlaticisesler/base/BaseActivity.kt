@@ -8,13 +8,18 @@ import android.widget.Toast
 /**
  * Created by bkubuzcu on 25/09/18.
  */
-open class BaseActivity : AppCompatActivity(), BaseView {
+abstract class BaseActivity : AppCompatActivity(), BaseView {
 
     private lateinit var looding: ProgressDialog
 
+    abstract fun layoutResource() : Int
+    abstract fun initActivity()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(layoutResource())
         looding = ProgressDialog(this)
+        initActivity()
     }
 
     override fun showProgress() {

@@ -1,17 +1,14 @@
 package com.example.bkubuzcu.rahatlaticisesler
 
-import android.os.Bundle
 import android.support.v4.view.ViewPager
 import com.example.bkubuzcu.rahatlaticisesler.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseActivity() {
+    override fun layoutResource() = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+    override fun initActivity() {
         vPFragment.adapter = MainAdapter(supportFragmentManager)
         vPFragment.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
@@ -35,6 +32,4 @@ class MainActivity : BaseActivity() {
             true
         })
     }
-
-
 }

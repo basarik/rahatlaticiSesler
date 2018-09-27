@@ -1,6 +1,7 @@
 package com.example.bkubuzcu.rahatlaticisesler.api
 
 import com.example.bkubuzcu.rahatlaticisesler.model.Category
+import com.example.bkubuzcu.rahatlaticisesler.model.Song
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -9,6 +10,8 @@ import retrofit2.http.GET
  */
 interface GithubService {
     @GET("categories.json")
-    fun getCategories(): Call< List<Category>>
+    fun getCategories(): Call<List<Category>>
 
+    @GET("favourites.json")
+    fun getFavourites(): Call<List<Song>>
 }

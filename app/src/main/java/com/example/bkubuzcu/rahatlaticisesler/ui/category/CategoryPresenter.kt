@@ -1,4 +1,4 @@
-package com.example.bkubuzcu.rahatlaticisesler.ui
+package com.example.bkubuzcu.rahatlaticisesler.ui.category
 
 import com.example.bkubuzcu.rahatlaticisesler.base.ApiResponse
 import com.example.bkubuzcu.rahatlaticisesler.base.BasePresenter

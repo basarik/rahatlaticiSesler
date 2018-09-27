@@ -1,7 +1,7 @@
 package com.example.bkubuzcu.rahatlaticisesler
 
-import com.example.bkubuzcu.rahatlaticisesler.ui.category.CategoryContract
-import com.example.bkubuzcu.rahatlaticisesler.ui.category.CategoryPresenter
+import com.example.bkubuzcu.rahatlaticisesler.ui.favourite.FavouriteContract
+import com.example.bkubuzcu.rahatlaticisesler.ui.favourite.FavouritePresenter
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -11,12 +11,10 @@ import org.junit.Test
 /**
  * Created by bkubuzcu on 26/09/18.
  */
-class CategoryPresenterTest {
-
-    private val view = mock<CategoryContract.View>()
-    private val repository = MockCategoryRepository()
-    private var presenter = CategoryPresenter(repository)
-
+class FavouritePresenterTest {
+    private val view = mock<FavouriteContract.View>()
+    private val repository = MockFavouriteRepository()
+    private val presenter = FavouritePresenter(repository)
 
     @Before
     fun setup() {
@@ -24,9 +22,9 @@ class CategoryPresenterTest {
     }
 
     @Test
-    fun categoryListFail() {
+    fun favouriteListFail() {
         repository.isSuccess = false
-        presenter.getCategories()
+        presenter.getFavourites()
 
         verify(view).showProgress()
         verify(view).hideProgress()
@@ -34,12 +32,12 @@ class CategoryPresenterTest {
     }
 
     @Test
-    fun categoryListSuccess() {
+    fun favouriteListSuccess() {
         repository.isSuccess = true
-        presenter.getCategories()
+        presenter.getFavourites()
 
         verify(view).showProgress()
         verify(view).hideProgress()
-        verify(view).onGetCategories(any())
+        verify(view).onGetFavourites(any())
     }
 }

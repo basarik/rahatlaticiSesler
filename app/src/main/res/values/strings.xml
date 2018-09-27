@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">RahatlaticiSesler</string>
+    <string name="tools_category">Sample Category</string>
+    <string name="tools_song">Sample Song</string>
+    <string name="favourite">Favorilerim</string>
+    <string name="library">Kitaplık</string>
+    <string name="title_category">Kitaplık</string>
+    <string name="title_fav">Favoriler</string>
 </resources>

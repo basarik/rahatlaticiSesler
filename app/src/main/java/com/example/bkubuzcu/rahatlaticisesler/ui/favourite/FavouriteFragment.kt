@@ -1,4 +1,4 @@
-package com.example.bkubuzcu.rahatlaticisesler.ui
+package com.example.bkubuzcu.rahatlaticisesler.ui.favourite
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -6,27 +6,27 @@ import android.view.View
 import com.example.bkubuzcu.rahatlaticisesler.R
 import com.example.bkubuzcu.rahatlaticisesler.app.App
 import com.example.bkubuzcu.rahatlaticisesler.base.BaseFragment
-import com.example.bkubuzcu.rahatlaticisesler.model.Category
+import com.example.bkubuzcu.rahatlaticisesler.model.Song
+import com.example.bkubuzcu.rahatlaticisesler.ui.SongAdapter
 import kotlinx.android.synthetic.main.fragment_category.*
 
 /**
- * Created by bkubuzcu on 25/09/18.
+ * Created by bkubuzcu on 26/09/18.
  */
-class CategoryFragment : BaseFragment(),  CategoryContract.View {
+class FavouriteFragment : BaseFragment(), FavouriteContract.View {
 
-    private lateinit var presenter:CategoryContract.Presenter
+    private lateinit var presenter: FavouriteContract.Presenter
 
-    override fun layoutResource() = R.layout.fragment_category
-
+    override fun layoutResource() = R.layout.fragment_favourite
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        presenter = App.instance.presenterFactory.categoryPresenter()
+        presenter = App.instance.presenterFactory.favouritePresenter()
         presenter.attach(this)
 
-        presenter.getCategories()
+        presenter.getFavourites()
     }
 
     override fun onDestroy() {
@@ -34,11 +34,7 @@ class CategoryFragment : BaseFragment(),  CategoryContract.View {
         presenter.detach()
     }
 
-    override fun onGetCategories(categories: List<Category>) {
-        recyclerView.adapter = MyRecyclerViewAdapter(categories)
+    override fun onGetFavourites(favouriteList: List<Song>) {
+        recyclerView.adapter = SongAdapter(favouriteList)
     }
-
-
-
-
 }

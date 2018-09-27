@@ -1,4 +1,4 @@
-package com.example.bkubuzcu.rahatlaticisesler.ui
+package com.example.bkubuzcu.rahatlaticisesler.ui.category
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.example.bkubuzcu.rahatlaticisesler.R
 import com.example.bkubuzcu.rahatlaticisesler.model.Category
 
-class MyRecyclerViewAdapter(private val list: List<Category>) : RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>() {
+class CategoryAdapter(private val list: List<Category>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.row_category, parent, false)

@@ -7,4 +7,5 @@ import com.example.bkubuzcu.rahatlaticisesler.app.PresenterFactory
  */
 class MockFactory : PresenterFactory() {
     override fun categoryRepository() = MockCategoryRepository()
+    override fun favouriteRepository() = MockFavouriteRepository()
 }

@@ -1,6 +1,7 @@
-package com.example.bkubuzcu.rahatlaticisesler.ui
+package com.example.bkubuzcu.rahatlaticisesler.ui.category
 
 import com.example.bkubuzcu.rahatlaticisesler.api.GithubService
+import com.example.bkubuzcu.rahatlaticisesler.app.Constants
 import com.example.bkubuzcu.rahatlaticisesler.base.ApiResponse
 import com.example.bkubuzcu.rahatlaticisesler.base.OnResponseListener
 import com.example.bkubuzcu.rahatlaticisesler.model.Category
@@ -11,7 +12,7 @@ import retrofit2.Response
 /**
  * Created by bkubuzcu on 25/09/18.
  */
-class CategoryRepositoryImpl(private val service: GithubService): CategoryRepository{
+class CategoryRepositoryImpl(private val service: GithubService): CategoryRepository {
     override fun getCategories(listener:OnResponseListener<List<Category>>){
         service.getCategories().enqueue(object: Callback<List<Category>?> {
             override fun onFailure(call: Call<List<Category>?>?, t: Throwable) {
@@ -19,10 +20,10 @@ class CategoryRepositoryImpl(private val service: GithubService): CategoryReposi
             }
 
             override fun onResponse(call: Call<List<Category>?>?, response: Response<List<Category>?>) {
-                if (response.body() != null && response.code() == 200){
+                if (response.body() != null && response.code() == Constants.RESPONSE_SUCCESS_CODE){
                     listener.onResponse(ApiResponse.success(response.body()!!))
                 } else {
-                    listener.onResponse(ApiResponse.error(Throwable("An error occurred")))
+                    listener.onResponse(ApiResponse.error(Throwable(Constants.ERROR_OCCURED)))
                 }
             }
         })

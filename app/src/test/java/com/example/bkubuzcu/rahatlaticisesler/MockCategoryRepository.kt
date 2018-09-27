@@ -3,7 +3,7 @@ package com.example.bkubuzcu.rahatlaticisesler
 import com.example.bkubuzcu.rahatlaticisesler.base.ApiResponse
 import com.example.bkubuzcu.rahatlaticisesler.base.OnResponseListener
 import com.example.bkubuzcu.rahatlaticisesler.model.Category
-import com.example.bkubuzcu.rahatlaticisesler.ui.CategoryRepository
+import com.example.bkubuzcu.rahatlaticisesler.ui.category.CategoryRepository
 
 /**
  * Created by bkubuzcu on 26/09/18.
@@ -18,8 +18,6 @@ class MockCategoryRepository : CategoryRepository {
         } else {
             listener.onResponse(ApiResponse.error(Throwable(ERROR)))
         }
-
-
     }
 
     companion object {

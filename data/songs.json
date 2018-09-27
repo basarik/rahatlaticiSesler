@@ -5,6 +5,11 @@
     "isFavourite": true
   },
   {
+    "id": 1,
+    "title": "Müzik 2",
+    "isFavourite": false
+  },
+  {
     "id": 2,
     "title": "Müzik 3",
     "isFavourite": true
@@ -15,9 +20,24 @@
     "isFavourite": true
   },
   {
+    "id": 4,
+    "title": "Müzik 5",
+    "isFavourite": false
+  },
+  {
     "id": 5,
     "title": "Müzik 6",
     "isFavourite": true
+  },
+  {
+    "id": 6,
+    "title": "Müzik 7",
+    "isFavourite": false
+  },
+  {
+    "id": 7,
+    "title": "Müzik 8",
+    "isFavourite": false
   },
   {
     "id": 8,

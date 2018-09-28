@@ -2,6 +2,7 @@ package com.example.bkubuzcu.rahatlaticisesler.app
 
 import android.app.Application
 import com.example.bkubuzcu.rahatlaticisesler.api.GithubService
+import com.example.bkubuzcu.rahatlaticisesler.room.AppDatabase
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -13,6 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class App : Application() {
     lateinit var service: GithubService
     lateinit var presenterFactory: PresenterFactory
+    lateinit var database: AppDatabase
 
     override fun onCreate() {
         super.onCreate()
@@ -29,6 +31,7 @@ class App : Application() {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         service = retrofit.create(GithubService::class.java)
+        database = AppDatabase.getInstance(context = applicationContext)
     }
 
     companion object {

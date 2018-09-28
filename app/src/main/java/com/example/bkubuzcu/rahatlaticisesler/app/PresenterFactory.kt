@@ -8,10 +8,7 @@ import com.example.bkubuzcu.rahatlaticisesler.ui.detail.DetailContract
 import com.example.bkubuzcu.rahatlaticisesler.ui.detail.DetailPresenter
 import com.example.bkubuzcu.rahatlaticisesler.ui.detail.DetailRepoitoryImpl
 import com.example.bkubuzcu.rahatlaticisesler.ui.detail.DetailRepository
-import com.example.bkubuzcu.rahatlaticisesler.ui.favourite.FavouriteContract
-import com.example.bkubuzcu.rahatlaticisesler.ui.favourite.FavouritePresenter
-import com.example.bkubuzcu.rahatlaticisesler.ui.favourite.FavouriteRepository
-import com.example.bkubuzcu.rahatlaticisesler.ui.favourite.FavouriteRepositoryImpl
+import com.example.bkubuzcu.rahatlaticisesler.ui.favourite.*
 
 /**
  * Created by bkubuzcu on 26/09/18.
@@ -21,7 +18,8 @@ open class PresenterFactory{
     fun categoryPresenter(): CategoryContract.Presenter = CategoryPresenter(categoryRepository())
 
     open fun favouriteRepository(): FavouriteRepository = FavouriteRepositoryImpl(App.instance.service)
-    fun favouritePresenter(): FavouriteContract.Presenter = FavouritePresenter(favouriteRepository())
+    open fun localFavouriteRepository(): LocalFavouriteRepository = LocalFavouriteRepositoryImpl(App.instance.database.songDao())
+    fun favouritePresenter(): FavouriteContract.Presenter = FavouritePresenter(favouriteRepository(), localFavouriteRepository())
 
     open fun detailRepository(): DetailRepository = DetailRepoitoryImpl(App.instance.service)
     fun detailPresenter(): DetailContract.Presenter = DetailPresenter(detailRepository())

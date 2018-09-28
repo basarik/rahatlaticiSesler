@@ -14,7 +14,8 @@ import org.junit.Test
 class FavouritePresenterTest {
     private val view = mock<FavouriteContract.View>()
     private val repository = MockFavouriteRepository()
-    private val presenter = FavouritePresenter(repository)
+    private val localRepository = MockLocalFavouriteRepository()
+    private val presenter = FavouritePresenter(repository, localRepository)
 
     @Before
     fun setup() {

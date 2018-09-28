@@ -20,7 +20,7 @@ class MockFavouriteRepository : FavouriteRepository{
 
     companion object {
         const val ERROR = "Mock Error"
-        val SONGS = listOf(Song(0, "asd", 0,true))
+        val SONGS = listOf(Song(0, "asd", 0,true, "asd", false))
     }
 
 }

@@ -1,5 +1,8 @@
 package com.example.bkubuzcu.rahatlaticisesler.model
 
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import java.io.Serializable
 
 /**
@@ -7,4 +10,18 @@ import java.io.Serializable
  */
 data class Category(val id:Int, val title:String):Serializable
 
-data class Song(val id:Int, val title:String, val category:Int , var isFavourite:Boolean, val url:String, var isPlay:Boolean)
+@Entity(tableName = "song")
+data class Song(
+        @PrimaryKey(autoGenerate = true)
+        val id: Int,
+        @ColumnInfo(name = "title")
+        val title: String,
+        @ColumnInfo(name = "category")
+        val category: Int,
+        @ColumnInfo(name = "isFavourite")
+        var isFavourite: Boolean,
+        @ColumnInfo(name = "url")
+        val url: String,
+        @ColumnInfo(name = "isPlay")
+        var isPlay: Boolean
+)

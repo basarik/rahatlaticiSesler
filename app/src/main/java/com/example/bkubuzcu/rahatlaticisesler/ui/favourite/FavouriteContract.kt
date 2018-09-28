@@ -14,5 +14,6 @@ interface FavouriteContract {
 
     interface Presenter: BaseMvpPresenter<View> {
         fun getFavourites()
+        fun delete(song: Song)
     }
 }

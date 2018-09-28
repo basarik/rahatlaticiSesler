@@ -15,5 +15,7 @@ interface DetailContract{
 
     interface Presenter:BaseMvpPresenter<View>{
         fun getSongs(category: Category)
+        fun insertSong(song: Song)
+        fun deleteSong(song: Song)
     }
 }

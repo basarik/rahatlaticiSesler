@@ -7,6 +7,7 @@ import com.example.bkubuzcu.rahatlaticisesler.R
 import com.example.bkubuzcu.rahatlaticisesler.app.App
 import com.example.bkubuzcu.rahatlaticisesler.app.MediaPlayerManager
 import com.example.bkubuzcu.rahatlaticisesler.app.SongCompletionListener
+import com.example.bkubuzcu.rahatlaticisesler.app.Util
 import com.example.bkubuzcu.rahatlaticisesler.base.BaseActivity
 import com.example.bkubuzcu.rahatlaticisesler.model.Category
 import com.example.bkubuzcu.rahatlaticisesler.model.Song
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_category.*
 class DetailActivity : BaseActivity(), DetailContract.View, OnItemClickListener, SongCompletionListener {
 
     private val mediaPlayerManager = MediaPlayerManager()
-    lateinit var localSongList:List<Song>
+    private lateinit var localSongList:List<Song>
 
 
     override fun onPlayClick(song: Song) {
@@ -30,7 +31,11 @@ class DetailActivity : BaseActivity(), DetailContract.View, OnItemClickListener,
     }
 
     override fun onFavouriteClick(song: Song) {
-
+        if (Util.isFavourite(song)){
+            presenter.deleteSong(song)
+        } else{
+            presenter.insertSong(song)
+        }
     }
 
     override fun initActivity() {

@@ -2,6 +2,7 @@ package com.example.bkubuzcu.rahatlaticisesler.app
 
 import android.app.Application
 import com.example.bkubuzcu.rahatlaticisesler.api.GithubService
+import com.example.bkubuzcu.rahatlaticisesler.model.Song
 import com.example.bkubuzcu.rahatlaticisesler.room.AppDatabase
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,6 +16,8 @@ class App : Application() {
     lateinit var service: GithubService
     lateinit var presenterFactory: PresenterFactory
     lateinit var database: AppDatabase
+    val globalFavourites = arrayListOf<Song>()
+
 
     override fun onCreate() {
         super.onCreate()

@@ -17,18 +17,22 @@ import kotlinx.android.synthetic.main.fragment_category.*
  * Created by bkubuzcu on 26/09/18.
  */
 class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickListener, SongCompletionListener {
+
     override fun onCompleted(song: Song) {
-        localSongList.find {it.id == song.id }?.isPlay = false
+        localSongList.find { it.id == song.id }?.isPlay = false
         recyclerView.adapter.notifyDataSetChanged()
     }
 
     override fun onFavouriteClick(song: Song) {
+        presenter.delete(song)
+        localSongList.remove(song)
 
+        recyclerView.adapter.notifyDataSetChanged()
     }
 
     private val mediaPlayerManager = MediaPlayerManager()
     private lateinit var presenter: FavouriteContract.Presenter
-    lateinit var localSongList:List<Song>
+    private var localSongList = App.instance.globalFavourites
 
     override fun onPlayClick(song: Song) {
         mediaPlayerManager.playAndPause(song)
@@ -55,8 +59,11 @@ class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickLis
     }
 
     override fun onGetFavourites(favouriteList: List<Song>) {
-        localSongList = favouriteList
         recyclerView.adapter = SongAdapter(localSongList, this)
         mediaPlayerManager.setSongs(localSongList)
+    }
+
+    fun refresh() {
+        presenter.getFavourites()
     }
 }

@@ -1,8 +1,11 @@
 package com.example.bkubuzcu.rahatlaticisesler.ui.favourite
 
+import android.content.Context
+import android.media.AudioManager
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.widget.SeekBar
 import com.example.bkubuzcu.rahatlaticisesler.R
 import com.example.bkubuzcu.rahatlaticisesler.app.App
 import com.example.bkubuzcu.rahatlaticisesler.app.MediaPlayerManager
@@ -11,7 +14,8 @@ import com.example.bkubuzcu.rahatlaticisesler.base.BaseFragment
 import com.example.bkubuzcu.rahatlaticisesler.model.Song
 import com.example.bkubuzcu.rahatlaticisesler.ui.OnItemClickListener
 import com.example.bkubuzcu.rahatlaticisesler.ui.SongAdapter
-import kotlinx.android.synthetic.main.fragment_category.*
+import kotlinx.android.synthetic.main.fragment_favourite.*
+
 
 /**
  * Created by bkubuzcu on 26/09/18.
@@ -50,6 +54,21 @@ class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickLis
         presenter.getFavourites()
         mediaPlayerManager.listener = this
 
+        val audioManager = activity?.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+
+        seekBar.apply {
+            progress = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
+            max = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
+            setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar, newVolume: Int, b: Boolean) {
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, newVolume, 0)
+                }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar) {}
+
+                override fun onStopTrackingTouch(seekBar: SeekBar) {}
+            })
+        }
     }
 
     override fun onDestroy() {

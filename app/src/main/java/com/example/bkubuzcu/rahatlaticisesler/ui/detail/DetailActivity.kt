@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.example.bkubuzcu.rahatlaticisesler.R
 import com.example.bkubuzcu.rahatlaticisesler.app.App
 import com.example.bkubuzcu.rahatlaticisesler.app.MediaPlayerManager
+import com.example.bkubuzcu.rahatlaticisesler.app.SongCompletionListener
 import com.example.bkubuzcu.rahatlaticisesler.base.BaseActivity
 import com.example.bkubuzcu.rahatlaticisesler.model.Category
 import com.example.bkubuzcu.rahatlaticisesler.model.Song
@@ -13,12 +14,23 @@ import com.example.bkubuzcu.rahatlaticisesler.ui.OnItemClickListener
 import com.example.bkubuzcu.rahatlaticisesler.ui.SongAdapter
 import kotlinx.android.synthetic.main.fragment_category.*
 
-class DetailActivity : BaseActivity(), DetailContract.View, OnItemClickListener {
+class DetailActivity : BaseActivity(), DetailContract.View, OnItemClickListener, SongCompletionListener {
 
     private val mediaPlayerManager = MediaPlayerManager()
+    lateinit var localSongList:List<Song>
 
-    override fun onItemClick(song: Song) {
+
+    override fun onPlayClick(song: Song) {
         mediaPlayerManager.playAndPause(song)
+    }
+
+    override fun onCompleted(song: Song) {
+        localSongList.find {it.id == song.id }?.isPlay = false
+        recyclerView.adapter.notifyDataSetChanged()
+    }
+
+    override fun onFavouriteClick(song: Song) {
+
     }
 
     override fun initActivity() {
@@ -30,6 +42,7 @@ class DetailActivity : BaseActivity(), DetailContract.View, OnItemClickListener 
         presenter = App.instance.presenterFactory.detailPresenter()
         presenter.attach(this)
         presenter.getSongs(category)
+        mediaPlayerManager.listener = this
     }
 
     override fun onDestroy() {
@@ -43,8 +56,9 @@ class DetailActivity : BaseActivity(), DetailContract.View, OnItemClickListener 
     private lateinit var presenter: DetailContract.Presenter
 
     override fun onGetSongs(songList: List<Song>) {
-        recyclerView.adapter = SongAdapter(songList, this)
-        mediaPlayerManager.setSongs(songList)
+        localSongList = songList
+        recyclerView.adapter = SongAdapter(localSongList, this)
+        mediaPlayerManager.setSongs(localSongList)
     }
 
     companion object {

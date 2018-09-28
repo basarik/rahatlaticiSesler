@@ -6,6 +6,7 @@ import android.view.View
 import com.example.bkubuzcu.rahatlaticisesler.R
 import com.example.bkubuzcu.rahatlaticisesler.app.App
 import com.example.bkubuzcu.rahatlaticisesler.app.MediaPlayerManager
+import com.example.bkubuzcu.rahatlaticisesler.app.SongCompletionListener
 import com.example.bkubuzcu.rahatlaticisesler.base.BaseFragment
 import com.example.bkubuzcu.rahatlaticisesler.model.Song
 import com.example.bkubuzcu.rahatlaticisesler.ui.OnItemClickListener
@@ -15,12 +16,21 @@ import kotlinx.android.synthetic.main.fragment_category.*
 /**
  * Created by bkubuzcu on 26/09/18.
  */
-class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickListener {
+class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickListener, SongCompletionListener {
+    override fun onCompleted(song: Song) {
+        localSongList.find {it.id == song.id }?.isPlay = false
+        recyclerView.adapter.notifyDataSetChanged()
+    }
+
+    override fun onFavouriteClick(song: Song) {
+
+    }
 
     private val mediaPlayerManager = MediaPlayerManager()
     private lateinit var presenter: FavouriteContract.Presenter
+    lateinit var localSongList:List<Song>
 
-    override fun onItemClick(song: Song) {
+    override fun onPlayClick(song: Song) {
         mediaPlayerManager.playAndPause(song)
     }
 
@@ -34,6 +44,8 @@ class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickLis
         presenter.attach(this)
 
         presenter.getFavourites()
+        mediaPlayerManager.listener = this
+
     }
 
     override fun onDestroy() {
@@ -43,7 +55,8 @@ class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickLis
     }
 
     override fun onGetFavourites(favouriteList: List<Song>) {
-        recyclerView.adapter = SongAdapter(favouriteList, this)
-        mediaPlayerManager.setSongs(favouriteList)
+        localSongList = favouriteList
+        recyclerView.adapter = SongAdapter(localSongList, this)
+        mediaPlayerManager.setSongs(localSongList)
     }
 }

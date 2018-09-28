@@ -8,6 +8,8 @@ import com.example.bkubuzcu.rahatlaticisesler.model.Song
  */
 class MediaPlayerManager : HashMap<Int, MediaPlayer>() {
 
+    var listener: SongCompletionListener? = null
+
     fun setSongs(songs: List<Song>) {
         songs.forEach {
             this[it.id] = MediaPlayer()
@@ -28,13 +30,27 @@ class MediaPlayerManager : HashMap<Int, MediaPlayer>() {
                 if (currentPosition == 0) {
                     try {
                         setDataSource(song.url)
-                        prepare()
+                        prepareAsync()
+                        setOnPreparedListener({
+                            start()
+                            setOnCompletionListener {
+                                listener?.onCompleted(song)
+                            }
+                        })
                     } catch (e: Exception) {
                     }
+                } else {
+                    start()
+                    setOnCompletionListener {
+                        listener?.onCompleted(song)
+                    }
                 }
-                start()
             }
+
         }
     }
+}
 
+interface SongCompletionListener {
+    fun onCompleted(song: Song)
 }

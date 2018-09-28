@@ -5,17 +5,25 @@ import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.example.bkubuzcu.rahatlaticisesler.R
 import com.example.bkubuzcu.rahatlaticisesler.app.App
+import com.example.bkubuzcu.rahatlaticisesler.app.MediaPlayerManager
 import com.example.bkubuzcu.rahatlaticisesler.base.BaseActivity
 import com.example.bkubuzcu.rahatlaticisesler.model.Category
 import com.example.bkubuzcu.rahatlaticisesler.model.Song
+import com.example.bkubuzcu.rahatlaticisesler.ui.OnItemClickListener
 import com.example.bkubuzcu.rahatlaticisesler.ui.SongAdapter
 import kotlinx.android.synthetic.main.fragment_category.*
 
-class DetailActivity : BaseActivity(), DetailContract.View {
+class DetailActivity : BaseActivity(), DetailContract.View, OnItemClickListener {
+
+    private val mediaPlayerManager = MediaPlayerManager()
+
+    override fun onItemClick(song: Song) {
+        mediaPlayerManager.playAndPause(song)
+    }
+
     override fun initActivity() {
 
         val category = intent.getSerializableExtra(KEY_CATEGORY) as Category
-
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -27,6 +35,7 @@ class DetailActivity : BaseActivity(), DetailContract.View {
     override fun onDestroy() {
         super.onDestroy()
         presenter.detach()
+        mediaPlayerManager.release()
     }
 
     override fun layoutResource() = R.layout.activity_detail
@@ -34,12 +43,13 @@ class DetailActivity : BaseActivity(), DetailContract.View {
     private lateinit var presenter: DetailContract.Presenter
 
     override fun onGetSongs(songList: List<Song>) {
-        recyclerView.adapter = SongAdapter(songList)
+        recyclerView.adapter = SongAdapter(songList, this)
+        mediaPlayerManager.setSongs(songList)
     }
 
     companion object {
         const val KEY_CATEGORY = "category"
-        fun start(context: Context, category: Category){
+        fun start(context: Context, category: Category) {
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra(KEY_CATEGORY, category)
             context.startActivity(intent)

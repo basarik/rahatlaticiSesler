@@ -7,4 +7,4 @@ import java.io.Serializable
  */
 data class Category(val id:Int, val title:String):Serializable
 
-data class Song(val id:Int, val title:String, val category:Int , val isFavourite:Boolean)
+data class Song(val id:Int, val title:String, val category:Int , val isFavourite:Boolean, val url:String)

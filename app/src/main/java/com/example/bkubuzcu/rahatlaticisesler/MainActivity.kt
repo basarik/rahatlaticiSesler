@@ -10,6 +10,7 @@ class MainActivity : BaseActivity() {
 
     override fun initActivity() {
         vPFragment.adapter = MainAdapter(supportFragmentManager)
+
         vPFragment.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
 

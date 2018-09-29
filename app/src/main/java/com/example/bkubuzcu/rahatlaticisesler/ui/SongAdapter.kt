@@ -35,6 +35,11 @@ class SongAdapter(private val list: List<Song>, private val listener: OnItemClic
             listener.onPlayClick(song)
         })
 
+        val isFav = Util.isFavourite(song)
+        if (isFav){
+            song.isFavourite = true
+        }
+
         holder.ivFavourite.background = if (Util.isFavourite(song)) getFavouriteIcon(holder) else getUnFavouriteIcon(holder)
         holder.ivFavourite.setOnClickListener({
             holder.ivFavourite.background = if (!song.isFavourite) getFavouriteIcon(holder) else getUnFavouriteIcon(holder)

@@ -1,12 +1,16 @@
 package com.example.bkubuzcu.rahatlaticisesler.ui.category
 
+import android.graphics.drawable.Drawable
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.bkubuzcu.rahatlaticisesler.R
 import com.example.bkubuzcu.rahatlaticisesler.model.Category
+import kotlinx.android.synthetic.main.row_category.view.*
 
 class CategoryAdapter(private val list: List<Category>, private val listener: OnItemClickListener) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
@@ -19,6 +23,7 @@ class CategoryAdapter(private val list: List<Category>, private val listener: On
         val category = list[position]
 
         holder.title.text = category.title
+        holder.category.background = getBackground(holder, category.id)
 
         holder.itemView.setOnClickListener({
             listener.onItemClick(category)
@@ -30,7 +35,21 @@ class CategoryAdapter(private val list: List<Category>, private val listener: On
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val title: TextView = view.findViewById(R.id.tvMain) as TextView
+        val title: TextView = view.tvMain
+        val category:ImageView = view.ivCategory
+    }
+
+    private fun getBackground(holder: ViewHolder, id:Int) : Drawable{
+
+        var drawable = R.drawable.bird
+        when(id){
+            0-> drawable = R.drawable.bird
+            1-> drawable = R.drawable.piano
+            2-> drawable = R.drawable.nature
+        }
+
+        return ContextCompat.getDrawable(holder.itemView.context, drawable)!!
+
     }
 }
 

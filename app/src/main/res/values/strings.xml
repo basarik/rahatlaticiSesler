@@ -8,4 +8,5 @@
     <string name="library">Kitaplık</string>
     <string name="title_activity_detail">Kategori Detay</string>
     <string name="loadingMessage">Lütfen bekleyin, bilgiler alınıyor</string>
+    <string name="volume">Ses Ayarı</string>
 </resources>

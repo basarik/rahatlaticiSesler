@@ -10,8 +10,8 @@ import android.view.ViewGroup
 /**
  * Created by bkubuzcu on 25/09/18.
  */
-abstract class BaseFragment : Fragment(), BaseView{
-    abstract fun layoutResource() : Int
+abstract class BaseFragment : Fragment(), BaseView {
+    abstract fun layoutResource(): Int
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(layoutResource(), container, false)

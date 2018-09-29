@@ -1,6 +1,7 @@
 package com.example.bkubuzcu.rahatlaticisesler.app
 
 import android.media.MediaPlayer
+import android.util.Log
 import com.example.bkubuzcu.rahatlaticisesler.model.Song
 
 /**
@@ -38,6 +39,7 @@ class MediaPlayerManager : HashMap<Int, MediaPlayer>() {
                             }
                         })
                     } catch (e: Exception) {
+                        Log.d("playAndPause", Constants.ERROR_OCCURRED)
                     }
                 } else {
                     start()
@@ -46,7 +48,6 @@ class MediaPlayerManager : HashMap<Int, MediaPlayer>() {
                     }
                 }
             }
-
         }
     }
 }

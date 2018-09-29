@@ -5,7 +5,7 @@ import com.example.bkubuzcu.rahatlaticisesler.model.Song
 /**
  * Created by bkubuzcu on 28/09/18.
  */
-class Util{
+class Util {
     companion object {
         fun isFavourite(song: Song): Boolean {
             App.instance.globalFavourites.forEach {

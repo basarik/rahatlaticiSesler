@@ -15,9 +15,10 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         private var instance: AppDatabase? = null
+
         @Synchronized
         fun getInstance(context: Context): AppDatabase {
-            if (instance == null){
+            if (instance == null) {
                 instance = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "example")
                         .fallbackToDestructiveMigration()
                         .build()

@@ -13,9 +13,8 @@ import org.junit.Test
  */
 class FavouritePresenterTest {
     private val view = mock<FavouriteContract.View>()
-    private val repository = MockFavouriteRepository()
     private val localRepository = MockLocalFavouriteRepository()
-    private val presenter = FavouritePresenter(repository, localRepository)
+    private val presenter = FavouritePresenter(localRepository)
 
     @Before
     fun setup() {
@@ -23,22 +22,9 @@ class FavouritePresenterTest {
     }
 
     @Test
-    fun favouriteListFail() {
-        repository.isSuccess = false
+    fun getLocalFavourites() {
         presenter.getFavourites()
 
-        verify(view).showProgress()
-        verify(view).hideProgress()
-        verify(view).onError(any())
-    }
-
-    @Test
-    fun favouriteListSuccess() {
-        repository.isSuccess = true
-        presenter.getFavourites()
-
-        verify(view).showProgress()
-        verify(view).hideProgress()
         verify(view).onGetFavourites(any())
     }
 }

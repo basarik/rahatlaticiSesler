@@ -18,25 +18,10 @@ import kotlinx.android.synthetic.main.fragment_category.*
 class DetailActivity : BaseActivity(), DetailContract.View, OnItemClickListener, SongCompletionListener {
 
     private val mediaPlayerManager = MediaPlayerManager()
-    private lateinit var localSongList:List<Song>
+    private lateinit var localSongList: List<Song>
+    private lateinit var presenter: DetailContract.Presenter
 
-
-    override fun onPlayClick(song: Song) {
-        mediaPlayerManager.playAndPause(song)
-    }
-
-    override fun onCompleted(song: Song) {
-        localSongList.find {it.id == song.id }?.isPlay = false
-        recyclerView.adapter.notifyDataSetChanged()
-    }
-
-    override fun onFavouriteClick(song: Song) {
-        if (Util.isFavourite(song)){
-            presenter.deleteSong(song)
-        } else{
-            presenter.insertSong(song)
-        }
-    }
+    override fun layoutResource() = R.layout.activity_detail
 
     override fun initActivity() {
 
@@ -56,18 +41,32 @@ class DetailActivity : BaseActivity(), DetailContract.View, OnItemClickListener,
         mediaPlayerManager.release()
     }
 
-    override fun layoutResource() = R.layout.activity_detail
-
-    private lateinit var presenter: DetailContract.Presenter
-
     override fun onGetSongs(songList: List<Song>) {
         localSongList = songList
         recyclerView.adapter = SongAdapter(localSongList, this)
         mediaPlayerManager.setSongs(localSongList)
     }
 
+    override fun onPlayClick(song: Song) {
+        mediaPlayerManager.playAndPause(song)
+    }
+
+    override fun onCompleted(song: Song) {
+        localSongList.find { it.id == song.id }?.isPlay = false
+        recyclerView.adapter.notifyDataSetChanged()
+    }
+
+    override fun onFavouriteClick(song: Song) {
+        if (Util.isFavourite(song)) {
+            presenter.deleteSong(song)
+        } else {
+            presenter.insertSong(song)
+        }
+    }
+
     companion object {
         const val KEY_CATEGORY = "category"
+
         fun start(context: Context, category: Category) {
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra(KEY_CATEGORY, category)

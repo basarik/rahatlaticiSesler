@@ -25,17 +25,17 @@ class SongAdapter(private val list: List<Song>, private val listener: OnItemClic
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val song = list[position]
+
         holder.title.text = song.title
 
         holder.ivPlay.background = if (song.isPlay) getPauseIcon(holder) else getPlayIcon(holder)
-        holder.ivFavourite.background = if (Util.isFavourite(song)) getFavouriteIcon(holder) else getUnFavouriteIcon(holder)
-
         holder.ivPlay.setOnClickListener({
             holder.ivPlay.background = if (!song.isPlay) getPauseIcon(holder) else getPlayIcon(holder)
             song.isPlay = !song.isPlay
             listener.onPlayClick(song)
         })
 
+        holder.ivFavourite.background = if (Util.isFavourite(song)) getFavouriteIcon(holder) else getUnFavouriteIcon(holder)
         holder.ivFavourite.setOnClickListener({
             holder.ivFavourite.background = if (!song.isFavourite) getFavouriteIcon(holder) else getUnFavouriteIcon(holder)
             song.isFavourite = !song.isFavourite
@@ -68,8 +68,6 @@ class SongAdapter(private val list: List<Song>, private val listener: OnItemClic
     private fun getUnFavouriteIcon(holder: ViewHolder): Drawable? {
         return ContextCompat.getDrawable(holder.itemView.context, R.drawable.baseline_favorite_border_black_36)
     }
-
-
 }
 
 interface OnItemClickListener {

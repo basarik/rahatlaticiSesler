@@ -17,7 +17,9 @@ class CategoryAdapter(private val list: List<Category>, private val listener: On
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val category = list[position]
+
         holder.title.text = category.title
+
         holder.itemView.setOnClickListener({
             listener.onItemClick(category)
         })

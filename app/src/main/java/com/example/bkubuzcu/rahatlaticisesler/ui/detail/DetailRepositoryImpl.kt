@@ -13,7 +13,7 @@ import retrofit2.Response
 /**
  * Created by bkubuzcu on 28/09/18.
  */
-class DetailRepoitoryImpl(private val service: GithubService) : DetailRepository {
+class DetailRepositoryImpl(private val service: GithubService) : DetailRepository {
     override fun getSongs(listener: OnResponseListener<List<Song>>, category: Category) {
         service.getSongs().enqueue(object : Callback<List<Song>?> {
             override fun onFailure(call: Call<List<Song>?>?, t: Throwable) {
@@ -26,7 +26,7 @@ class DetailRepoitoryImpl(private val service: GithubService) : DetailRepository
                         it.category == category.id
                     }))
                 } else {
-                    listener.onResponse(ApiResponse.error(Throwable(Constants.ERROR_OCCURED)))
+                    listener.onResponse(ApiResponse.error(Throwable(Constants.ERROR_OCCURRED)))
                 }
             }
         })

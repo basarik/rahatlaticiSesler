@@ -14,8 +14,8 @@ import org.junit.Test
 class DetailPresenterTest {
     private val view = mock<DetailContract.View>()
     private val repository = MockDetailRepository()
-    private val presenter = DetailPresenter(repository)
-
+    private val localRepository = MockLocalFavouriteRepository()
+    private val presenter = DetailPresenter(repository, localRepository)
 
     @Before
     fun setup() {
@@ -40,5 +40,4 @@ class DetailPresenterTest {
         verify(view).hideProgress()
         verify(view).onGetSongs(any())
     }
-
 }

@@ -8,12 +8,12 @@ import com.example.bkubuzcu.rahatlaticisesler.model.Song
 /**
  * Created by bkubuzcu on 27/09/18.
  */
-interface DetailContract{
-    interface View: BaseView{
-        fun onGetSongs(songList:List<Song>)
+interface DetailContract {
+    interface View : BaseView {
+        fun onGetSongs(songList: List<Song>)
     }
 
-    interface Presenter:BaseMvpPresenter<View>{
+    interface Presenter : BaseMvpPresenter<View> {
         fun getSongs(category: Category)
         fun insertSong(song: Song)
         fun deleteSong(song: Song)

@@ -22,8 +22,7 @@ class LocalFavouriteRepositoryImpl(private val dao: SongDao) : LocalFavouriteRep
         }
     }
 
-
-    override fun getFavourites(listener: OnLocalFavourites) {
+    override fun getFavourites(listener: OnLocalFavouritesListener) {
         doAsync {
             val list = dao.all
             uiThread {
@@ -38,11 +37,11 @@ class LocalFavouriteRepositoryImpl(private val dao: SongDao) : LocalFavouriteRep
 }
 
 interface LocalFavouriteRepository {
-    fun getFavourites(listener: OnLocalFavourites)
+    fun getFavourites(listener: OnLocalFavouritesListener)
     fun insert(song: Song)
     fun delete(song: Song)
 }
 
-interface OnLocalFavourites {
+interface OnLocalFavouritesListener {
     fun onGetLocalFavourites(list: List<Song>)
 }

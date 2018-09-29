@@ -6,7 +6,7 @@ import com.example.bkubuzcu.rahatlaticisesler.model.Song
 /**
  * Created by bkubuzcu on 26/09/18.
  */
-class FavouritePresenter(private val localRepository: LocalFavouriteRepository) : BasePresenter<FavouriteContract.View>(), FavouriteContract.Presenter, OnLocalFavourites {
+class FavouritePresenter(private val localRepository: LocalFavouriteRepository) : BasePresenter<FavouriteContract.View>(), FavouriteContract.Presenter, OnLocalFavouritesListener {
     override fun delete(song: Song) {
         localRepository.delete(song)
     }

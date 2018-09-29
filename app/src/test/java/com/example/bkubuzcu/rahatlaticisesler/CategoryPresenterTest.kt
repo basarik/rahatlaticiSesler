@@ -17,7 +17,6 @@ class CategoryPresenterTest {
     private val repository = MockCategoryRepository()
     private var presenter = CategoryPresenter(repository)
 
-
     @Before
     fun setup() {
         presenter.attach(view)

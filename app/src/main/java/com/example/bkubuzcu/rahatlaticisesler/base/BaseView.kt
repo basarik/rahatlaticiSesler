@@ -8,5 +8,5 @@ interface BaseView {
 
     fun hideProgress()
 
-    fun onError(t:Throwable)
+    fun onError(t: Throwable)
 }

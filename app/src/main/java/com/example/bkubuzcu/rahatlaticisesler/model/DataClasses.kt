@@ -8,7 +8,7 @@ import java.io.Serializable
 /**
  * Created by bkubuzcu on 25/09/18.
  */
-data class Category(val id:Int, val title:String):Serializable
+data class Category(val id: Int, val title: String) : Serializable
 
 @Entity(tableName = "song")
 data class Song(

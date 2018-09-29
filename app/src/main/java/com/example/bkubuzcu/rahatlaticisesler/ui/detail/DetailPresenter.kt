@@ -10,8 +10,7 @@ import com.example.bkubuzcu.rahatlaticisesler.ui.favourite.LocalFavouriteReposit
 /**
  * Created by bkubuzcu on 28/09/18.
  */
-class DetailPresenter(private val repository: DetailRepository,
-                      private val localFavouriteRepository: LocalFavouriteRepository) : BasePresenter<DetailContract.View>(), DetailContract.Presenter, OnResponseListener<List<Song>> {
+class DetailPresenter(private val repository: DetailRepository, private val localFavouriteRepository: LocalFavouriteRepository) : BasePresenter<DetailContract.View>(), DetailContract.Presenter, OnResponseListener<List<Song>> {
     override fun deleteSong(song: Song) {
         localFavouriteRepository.delete(song)
     }

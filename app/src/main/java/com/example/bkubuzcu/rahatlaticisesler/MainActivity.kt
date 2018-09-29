@@ -8,27 +8,29 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
-    lateinit var adapter: MainAdapter
+    private lateinit var adapter: MainAdapter
+    private val fragmentFavourite = 0
+    private val fragmentLibrary = 1
 
     override fun layoutResource() = R.layout.activity_main
 
     override fun initActivity() {
         adapter = MainAdapter(supportFragmentManager)
+
         vPFragment.adapter = adapter
-
         vPFragment.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {
+            override fun onPageScrollStateChanged(state: Int) {}
 
-            }
-
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-
-            }
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
             override fun onPageSelected(position: Int) {
                 bottomNavigationView.menu.getItem(position).isChecked = true
-                if (position == 0){
+                if (position == 0) {
                     refresh()
+                }
+                when (position) {
+                    fragmentFavourite -> getActivityTitle(fragmentFavourite)
+                    fragmentLibrary -> getActivityTitle(fragmentLibrary)
                 }
             }
         })
@@ -36,17 +38,29 @@ class MainActivity : BaseActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener({
             when (it.itemId) {
                 R.id.favorites -> {
-                    vPFragment.currentItem = 0
+                    vPFragment.currentItem = fragmentFavourite
                     refresh()
+                    getActivityTitle(fragmentFavourite)
                 }
 
-                R.id.categories -> vPFragment.currentItem = 1
+                R.id.categories -> {
+                    vPFragment.currentItem = fragmentLibrary
+                    getActivityTitle(fragmentLibrary)
+                }
             }
             true
         })
     }
 
-    fun refresh() {
-        (adapter.getItem(0) as FavouriteFragment?)?.refresh()
+    private fun refresh() {
+        (adapter.getItem(fragmentFavourite) as FavouriteFragment?)?.refresh()
+    }
+
+    private fun getActivityTitle(fragment: Int) {
+        if (fragment == fragmentLibrary) {
+            setTitle(R.string.library)
+        } else {
+            setTitle(R.string.favourite)
+        }
     }
 }

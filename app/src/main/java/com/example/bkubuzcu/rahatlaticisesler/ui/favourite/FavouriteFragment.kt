@@ -22,36 +22,21 @@ import kotlinx.android.synthetic.main.fragment_favourite.*
  */
 class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickListener, SongCompletionListener {
 
-    override fun onCompleted(song: Song) {
-        localSongList.find { it.id == song.id }?.isPlay = false
-        recyclerView.adapter.notifyDataSetChanged()
-    }
-
-    override fun onFavouriteClick(song: Song) {
-        presenter.delete(song)
-        localSongList.remove(song)
-
-        recyclerView.adapter.notifyDataSetChanged()
-    }
-
     private val mediaPlayerManager = MediaPlayerManager()
     private lateinit var presenter: FavouriteContract.Presenter
     private var localSongList = App.instance.globalFavourites
-
-    override fun onPlayClick(song: Song) {
-        mediaPlayerManager.playAndPause(song)
-    }
 
     override fun layoutResource() = R.layout.fragment_favourite
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
         presenter = App.instance.presenterFactory.favouritePresenter()
         presenter.attach(this)
-
         presenter.getFavourites()
+
         mediaPlayerManager.listener = this
 
         val audioManager = activity?.getSystemService(Context.AUDIO_SERVICE) as AudioManager
@@ -75,6 +60,22 @@ class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickLis
         super.onDestroy()
         presenter.detach()
         mediaPlayerManager.release()
+    }
+
+    override fun onPlayClick(song: Song) {
+        mediaPlayerManager.playAndPause(song)
+    }
+
+    override fun onCompleted(song: Song) {
+        localSongList.find { it.id == song.id }?.isPlay = false
+        recyclerView.adapter.notifyDataSetChanged()
+    }
+
+    override fun onFavouriteClick(song: Song) {
+        presenter.delete(song)
+        localSongList.remove(song)
+
+        recyclerView.adapter.notifyDataSetChanged()
     }
 
     override fun onGetFavourites(favouriteList: List<Song>) {

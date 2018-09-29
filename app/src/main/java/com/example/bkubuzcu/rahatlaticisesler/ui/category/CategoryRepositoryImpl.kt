@@ -12,24 +12,24 @@ import retrofit2.Response
 /**
  * Created by bkubuzcu on 25/09/18.
  */
-class CategoryRepositoryImpl(private val service: GithubService): CategoryRepository {
-    override fun getCategories(listener:OnResponseListener<List<Category>>){
-        service.getCategories().enqueue(object: Callback<List<Category>?> {
+class CategoryRepositoryImpl(private val service: GithubService) : CategoryRepository {
+    override fun getCategories(listener: OnResponseListener<List<Category>>) {
+        service.getCategories().enqueue(object : Callback<List<Category>?> {
             override fun onFailure(call: Call<List<Category>?>?, t: Throwable) {
                 listener.onResponse(ApiResponse.error(t))
             }
 
             override fun onResponse(call: Call<List<Category>?>?, response: Response<List<Category>?>) {
-                if (response.body() != null && response.code() == Constants.RESPONSE_SUCCESS_CODE){
+                if (response.body() != null && response.code() == Constants.RESPONSE_SUCCESS_CODE) {
                     listener.onResponse(ApiResponse.success(response.body()!!))
                 } else {
-                    listener.onResponse(ApiResponse.error(Throwable(Constants.ERROR_OCCURED)))
+                    listener.onResponse(ApiResponse.error(Throwable(Constants.ERROR_OCCURRED)))
                 }
             }
         })
     }
 }
 
-interface CategoryRepository{
-    fun getCategories(listener:OnResponseListener<List<Category>>)
+interface CategoryRepository {
+    fun getCategories(listener: OnResponseListener<List<Category>>)
 }

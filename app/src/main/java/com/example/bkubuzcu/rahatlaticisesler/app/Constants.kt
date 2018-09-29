@@ -6,6 +6,6 @@ package com.example.bkubuzcu.rahatlaticisesler.app
 class Constants {
     companion object {
         const val RESPONSE_SUCCESS_CODE = 200
-        const val ERROR_OCCURED = "An error occurred"
+        const val ERROR_OCCURRED = "An error occurred"
     }
 }

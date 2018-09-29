@@ -21,11 +21,11 @@ class CategoryFragment : BaseFragment(), CategoryContract.View, OnItemClickListe
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
         presenter = App.instance.presenterFactory.categoryPresenter()
         presenter.attach(this)
-
         presenter.getCategories()
     }
 

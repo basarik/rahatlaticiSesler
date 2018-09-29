@@ -9,10 +9,10 @@ import com.example.bkubuzcu.rahatlaticisesler.model.Song
  */
 interface FavouriteContract {
     interface View : BaseView {
-        fun onGetFavourites(favouriteList:List<Song>)
+        fun onGetFavourites(favouriteList: List<Song>)
     }
 
-    interface Presenter: BaseMvpPresenter<View> {
+    interface Presenter : BaseMvpPresenter<View> {
         fun getFavourites()
         fun delete(song: Song)
     }

@@ -16,24 +16,31 @@ class App : Application() {
     lateinit var service: GithubService
     lateinit var presenterFactory: PresenterFactory
     lateinit var database: AppDatabase
+    private val baseUrl = "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/"
     val globalFavourites = arrayListOf<Song>()
-
 
     override fun onCreate() {
         super.onCreate()
         instance = this
+
         presenterFactory = PresenterFactory()
-        val logger = HttpLoggingInterceptor()
-        logger.level = HttpLoggingInterceptor.Level.BODY
+
+        val logger = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
         val client = OkHttpClient.Builder()
                 .addInterceptor(logger)
                 .build()
+
         val retrofit = Retrofit.Builder()
-                .baseUrl("https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/")
+                .baseUrl(baseUrl)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
+
         service = retrofit.create(GithubService::class.java)
+
         database = AppDatabase.getInstance(context = applicationContext)
     }
 

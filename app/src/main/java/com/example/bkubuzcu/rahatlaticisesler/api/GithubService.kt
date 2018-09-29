@@ -12,9 +12,6 @@ interface GithubService {
     @GET("categories.json")
     fun getCategories(): Call<List<Category>>
 
-    @GET("favourites.json")
-    fun getFavourites(): Call<List<Song>>
-
     @GET("songs.json")
     fun getSongs(): Call<List<Song>>
 }

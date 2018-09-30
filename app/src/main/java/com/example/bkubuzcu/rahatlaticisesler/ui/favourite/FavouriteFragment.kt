@@ -93,6 +93,10 @@ class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickLis
     }
 
     override fun onGetFavourites(favouriteList: List<Song>) {
+        localSongList = arrayListOf()
+        favouriteList.forEach {
+            localSongList.add(it)
+        }
         recyclerView.adapter = SongAdapter(localSongList, this)
         mediaPlayerManager.setSongs(localSongList)
     }

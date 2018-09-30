@@ -6,6 +6,7 @@ import com.example.bkubuzcu.rahatlaticisesler.ui.favourite.OnLocalFavouritesList
 
 /**
  * Created by bkubuzcu on 28/09/18.
+ * this is MockLocalFavouriteRepository.
  */
 class MockLocalFavouriteRepository : LocalFavouriteRepository {
     var mockSongList = arrayListOf<Song>()

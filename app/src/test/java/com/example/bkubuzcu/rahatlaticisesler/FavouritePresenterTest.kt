@@ -10,10 +10,20 @@ import org.junit.Test
 
 /**
  * Created by bkubuzcu on 26/09/18.
+ * this is FavouritePresenterTest.
  */
 class FavouritePresenterTest {
+    /**
+     * mock view
+     */
     private val view = mock<FavouriteContract.View>()
+    /**
+     * mock favourite repository
+     */
     private val localRepository = MockLocalFavouriteRepository()
+    /**
+     * favourite presenter
+     */
     private val presenter = FavouritePresenter(localRepository)
 
     @Before
@@ -21,6 +31,9 @@ class FavouritePresenterTest {
         presenter.attach(view)
     }
 
+    /**
+     * get songs from database scenario
+     */
     @Test
     fun getLocalFavourites() {
         presenter.getFavourites()

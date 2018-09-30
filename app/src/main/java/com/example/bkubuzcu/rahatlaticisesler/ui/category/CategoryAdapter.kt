@@ -12,6 +12,11 @@ import com.example.bkubuzcu.rahatlaticisesler.R
 import com.example.bkubuzcu.rahatlaticisesler.model.Category
 import kotlinx.android.synthetic.main.row_category.view.*
 
+/**
+ * Created by bkubuzcu on 25/09/18.
+ * this is CategoryAdapter.
+ */
+
 class CategoryAdapter(private val list: List<Category>, private val listener: OnItemClickListener) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,6 +44,9 @@ class CategoryAdapter(private val list: List<Category>, private val listener: On
         val category:ImageView = view.ivCategory
     }
 
+    /**
+     * get background image from drawable
+     */
     private fun getBackground(holder: ViewHolder, id:Int) : Drawable{
 
         var drawable = R.drawable.bird
@@ -49,10 +57,15 @@ class CategoryAdapter(private val list: List<Category>, private val listener: On
         }
 
         return ContextCompat.getDrawable(holder.itemView.context, drawable)!!
-
     }
 }
 
+/**
+ * listener of category item
+ */
 interface OnItemClickListener {
+    /**
+     * on clicked
+     */
     fun onItemClick(category: Category)
 }

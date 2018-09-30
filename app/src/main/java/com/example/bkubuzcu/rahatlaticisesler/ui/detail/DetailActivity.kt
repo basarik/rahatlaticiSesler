@@ -15,10 +15,24 @@ import com.example.bkubuzcu.rahatlaticisesler.ui.OnItemClickListener
 import com.example.bkubuzcu.rahatlaticisesler.ui.SongAdapter
 import kotlinx.android.synthetic.main.fragment_category.*
 
+/**
+ * Created by bkubuzcu on 27/09/18.
+ * this is DetailActivity.
+ */
+
 class DetailActivity : BaseActivity(), DetailContract.View, OnItemClickListener, SongCompletionListener {
 
+    /**
+     * MediaPlayer
+     */
     private val mediaPlayerManager = MediaPlayerManager()
+    /**
+     * it is used to update the icon when the song is finished
+     */
     private lateinit var localSongList: List<Song>
+    /**
+     * detail presenter
+     */
     private lateinit var presenter: DetailContract.Presenter
 
     override fun layoutResource() = R.layout.activity_detail
@@ -32,6 +46,7 @@ class DetailActivity : BaseActivity(), DetailContract.View, OnItemClickListener,
         presenter = App.instance.presenterFactory.detailPresenter()
         presenter.attach(this)
         presenter.getSongs(category)
+
         mediaPlayerManager.listener = this
     }
 
@@ -65,8 +80,14 @@ class DetailActivity : BaseActivity(), DetailContract.View, OnItemClickListener,
     }
 
     companion object {
+        /**
+         * const category
+         */
         const val KEY_CATEGORY = "category"
 
+        /**
+         * start activity
+         */
         fun start(context: Context, category: Category) {
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra(KEY_CATEGORY, category)

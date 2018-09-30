@@ -9,8 +9,12 @@ import android.view.ViewGroup
 
 /**
  * Created by bkubuzcu on 25/09/18.
+ * this is BaseFragment.
  */
 abstract class BaseFragment : Fragment(), BaseView {
+    /**
+     * fragment layout
+     */
     abstract fun layoutResource(): Int
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -29,5 +33,8 @@ abstract class BaseFragment : Fragment(), BaseView {
         baseActivity()?.onError(t)
     }
 
+    /**
+     * base Activity
+     */
     private fun baseActivity() = activity as BaseActivity?
 }

@@ -11,6 +11,8 @@ import retrofit2.Response
 
 /**
  * Created by bkubuzcu on 25/09/18.
+ * this is CategoryRepositoryImpl.
+ * service calls and database operations are performed here.
  */
 class CategoryRepositoryImpl(private val service: GithubService) : CategoryRepository {
     override fun getCategories(listener: OnResponseListener<List<Category>>) {
@@ -31,5 +33,8 @@ class CategoryRepositoryImpl(private val service: GithubService) : CategoryRepos
 }
 
 interface CategoryRepository {
+    /**
+     * call category service
+     */
     fun getCategories(listener: OnResponseListener<List<Category>>)
 }

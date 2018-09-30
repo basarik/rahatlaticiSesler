@@ -12,6 +12,8 @@ import retrofit2.Response
 
 /**
  * Created by bkubuzcu on 28/09/18.
+ * this is DetailRepositoryImpl.
+ * service calls and database operations are performed here.
  */
 class DetailRepositoryImpl(private val service: GithubService) : DetailRepository {
     override fun getSongs(listener: OnResponseListener<List<Song>>, category: Category) {
@@ -22,6 +24,7 @@ class DetailRepositoryImpl(private val service: GithubService) : DetailRepositor
 
             override fun onResponse(call: Call<List<Song>?>?, response: Response<List<Song>?>) {
                 if (response.body() != null && response.code() == Constants.RESPONSE_SUCCESS_CODE) {
+                    //filtered by category
                     listener.onResponse(ApiResponse.success(response.body()!!.filter {
                         it.category == category.id
                     }))
@@ -34,5 +37,8 @@ class DetailRepositoryImpl(private val service: GithubService) : DetailRepositor
 }
 
 interface DetailRepository {
+    /**
+     * call song service
+     */
     fun getSongs(listener: OnResponseListener<List<Song>>, category: Category)
 }

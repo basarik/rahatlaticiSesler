@@ -10,11 +10,24 @@ import org.junit.Test
 
 /**
  * Created by bkubuzcu on 28/09/18.
+ * this is DetailPresenterTest.
  */
 class DetailPresenterTest {
+    /**
+     * mock view
+     */
     private val view = mock<DetailContract.View>()
+    /**
+     * mock repository
+     */
     private val repository = MockDetailRepository()
+    /**
+     * mock favourite repository
+     */
     private val localRepository = MockLocalFavouriteRepository()
+    /**
+     * detail presenter
+     */
     private val presenter = DetailPresenter(repository, localRepository)
 
     @Before
@@ -22,6 +35,9 @@ class DetailPresenterTest {
         presenter.attach(view)
     }
 
+    /**
+     * song success scenario
+     */
     @Test
     fun songListFail() {
         repository.isSuccess = false
@@ -32,6 +48,9 @@ class DetailPresenterTest {
         verify(view).onError(any())
     }
 
+    /**
+     * song success scenario
+     */
     @Test
     fun songListSuccess() {
         repository.isSuccess = true

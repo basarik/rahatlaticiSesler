@@ -5,11 +5,23 @@ import com.example.bkubuzcu.rahatlaticisesler.base.BaseActivity
 import com.example.bkubuzcu.rahatlaticisesler.ui.favourite.FavouriteFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-
+/**
+ * Created by bkubuzcu on 26/09/18.
+ * this is MainActivity.
+ */
 class MainActivity : BaseActivity() {
 
+    /**
+     * main adapter
+     */
     private lateinit var adapter: MainAdapter
+    /**
+     * favourite fragment id
+     */
     private val fragmentFavourite = 0
+    /**
+     * category fragment id
+     */
     private val fragmentLibrary = 1
 
     override fun layoutResource() = R.layout.activity_main
@@ -25,8 +37,8 @@ class MainActivity : BaseActivity() {
 
             override fun onPageSelected(position: Int) {
                 bottomNavigationView.menu.getItem(position).isChecked = true
-                if (position == 0) {
-                    refresh()
+                if (position == fragmentFavourite) {
+                    refreshFavourites()
                 }
                 when (position) {
                     fragmentFavourite -> getActivityTitle(fragmentFavourite)
@@ -39,7 +51,7 @@ class MainActivity : BaseActivity() {
             when (it.itemId) {
                 R.id.favorites -> {
                     vPFragment.currentItem = fragmentFavourite
-                    refresh()
+                    refreshFavourites()
                     getActivityTitle(fragmentFavourite)
                 }
 
@@ -52,10 +64,16 @@ class MainActivity : BaseActivity() {
         })
     }
 
-    private fun refresh() {
+    /**
+     * refresh songs
+     */
+    private fun refreshFavourites() {
         (adapter.getItem(fragmentFavourite) as FavouriteFragment?)?.refresh()
     }
 
+    /**
+     * decides the activity title.
+     */
     private fun getActivityTitle(fragment: Int) {
         if (fragment == fragmentLibrary) {
             setTitle(R.string.library)

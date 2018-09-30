@@ -19,11 +19,21 @@ import kotlinx.android.synthetic.main.fragment_favourite.*
 
 /**
  * Created by bkubuzcu on 26/09/18.
+ * this is FavouriteFragment.
  */
 class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickListener, SongCompletionListener {
 
+    /**
+     * MediaPlayer
+     */
     private val mediaPlayerManager = MediaPlayerManager()
+    /**
+     * favourite presenter
+     */
     private lateinit var presenter: FavouriteContract.Presenter
+    /**
+     * it is used to update the icon when the song is finished
+     */
     private var localSongList = App.instance.globalFavourites
 
     override fun layoutResource() = R.layout.fragment_favourite
@@ -87,6 +97,9 @@ class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickLis
         mediaPlayerManager.setSongs(localSongList)
     }
 
+    /**
+     * get favourite songs from database again.
+     */
     fun refresh() {
         presenter.getFavourites()
     }

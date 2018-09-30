@@ -7,6 +7,7 @@ import com.example.bkubuzcu.rahatlaticisesler.model.Category
 
 /**
  * Created by bkubuzcu on 25/09/18.
+ * this is CategoryPresenter.
  */
 class CategoryPresenter(private val repository: CategoryRepository) : BasePresenter<CategoryContract.View>(), CategoryContract.Presenter, OnResponseListener<List<Category>> {
 

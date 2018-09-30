@@ -11,12 +11,29 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Created by bkubuzcu on 25/09/18.
+ * this is application class.
  */
 class App : Application() {
+    /**
+     * retrofit service
+     */
     lateinit var service: GithubService
+    /**
+     * presenter factory
+     */
     lateinit var presenterFactory: PresenterFactory
+    /**
+     * room appDatabase
+     */
     lateinit var database: AppDatabase
+    /**
+     * retrofit base url
+     */
     private val baseUrl = "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/"
+    /**
+     * local favourite items
+     * it is kept because of asynchronous operations
+     */
     val globalFavourites = arrayListOf<Song>()
 
     override fun onCreate() {
@@ -45,6 +62,9 @@ class App : Application() {
     }
 
     companion object {
+        /**
+         * instance of application
+         */
         lateinit var instance: App
     }
 }

@@ -12,9 +12,13 @@ import kotlinx.android.synthetic.main.fragment_category.*
 
 /**
  * Created by bkubuzcu on 25/09/18.
+ * this is CategoryFragment.
  */
 class CategoryFragment : BaseFragment(), CategoryContract.View, OnItemClickListener {
 
+    /**
+     * category presenter
+     */
     private lateinit var presenter: CategoryContract.Presenter
 
     override fun layoutResource() = R.layout.fragment_category

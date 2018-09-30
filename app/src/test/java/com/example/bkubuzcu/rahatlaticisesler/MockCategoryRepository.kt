@@ -7,6 +7,7 @@ import com.example.bkubuzcu.rahatlaticisesler.ui.category.CategoryRepository
 
 /**
  * Created by bkubuzcu on 26/09/18.
+ * this is MockCategoryRepository.
  */
 class MockCategoryRepository : CategoryRepository {
 

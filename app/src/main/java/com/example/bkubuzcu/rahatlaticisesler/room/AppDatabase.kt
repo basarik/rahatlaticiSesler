@@ -8,14 +8,25 @@ import com.example.bkubuzcu.rahatlaticisesler.model.Song
 
 /**
  * Created by bkubuzcu on 28/09/18.
+ * this is AppDatabase.
+ * room database instance is created here.
  */
 @Database(entities = [Song::class], version = 5, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
+    /**
+     * song database object
+     */
     abstract fun songDao(): SongDao
 
     companion object {
+        /**
+         * instance
+         */
         private var instance: AppDatabase? = null
 
+        /**
+         * created instance
+         */
         @Synchronized
         fun getInstance(context: Context): AppDatabase {
             if (instance == null) {

@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.row_song.view.*
 
 /**
  * Created by bkubuzcu on 26/09/18.
+ * this is SongAdapter.
  */
 class SongAdapter(private val list: List<Song>, private val listener: OnItemClickListener) : RecyclerView.Adapter<SongAdapter.ViewHolder>() {
 
@@ -40,9 +41,9 @@ class SongAdapter(private val list: List<Song>, private val listener: OnItemClic
             song.isFavourite = true
         }
 
-        holder.ivFavourite.background = if (Util.isFavourite(song)) getFavouriteIcon(holder) else getUnFavouriteIcon(holder)
+        holder.ivFavourite.background = if (Util.isFavourite(song)) getFavouriteIcon(holder) else getNonFavouriteIcon(holder)
         holder.ivFavourite.setOnClickListener({
-            holder.ivFavourite.background = if (!song.isFavourite) getFavouriteIcon(holder) else getUnFavouriteIcon(holder)
+            holder.ivFavourite.background = if (!song.isFavourite) getFavouriteIcon(holder) else getNonFavouriteIcon(holder)
             song.isFavourite = !song.isFavourite
             listener.onFavouriteClick(song)
         })
@@ -58,23 +59,38 @@ class SongAdapter(private val list: List<Song>, private val listener: OnItemClic
         val ivFavourite: ImageView = view.ivFavourite
     }
 
+    /**
+     * get pause icon.
+     */
     private fun getPauseIcon(holder: ViewHolder): Drawable? {
         return ContextCompat.getDrawable(holder.itemView.context, R.drawable.baseline_pause_black_36)
     }
 
+    /**
+     * get play icon.
+     */
     private fun getPlayIcon(holder: ViewHolder): Drawable? {
         return ContextCompat.getDrawable(holder.itemView.context, R.drawable.baseline_play_arrow_black_36)
     }
 
+    /**
+     * get favourite icon
+     */
     private fun getFavouriteIcon(holder: ViewHolder): Drawable? {
         return ContextCompat.getDrawable(holder.itemView.context, R.drawable.baseline_favorite_black_36)
     }
 
-    private fun getUnFavouriteIcon(holder: ViewHolder): Drawable? {
+    /**
+     * get non-favourite icon
+     */
+    private fun getNonFavouriteIcon(holder: ViewHolder): Drawable? {
         return ContextCompat.getDrawable(holder.itemView.context, R.drawable.baseline_favorite_border_black_36)
     }
 }
 
+/**
+ * listener indicates to play or favourite clicked
+ */
 interface OnItemClickListener {
     fun onPlayClick(song: Song)
     fun onFavouriteClick(song: Song)

@@ -7,9 +7,13 @@ import com.example.bkubuzcu.rahatlaticisesler.ui.favourite.FavouriteFragment
 
 /**
  * Created by bkubuzcu on 27/09/18.
+ * this is MainAdapter.
  */
 class MainAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
 
+    /**
+     * fragments with viewPager
+     */
     private val fragments = listOf(
             FavouriteFragment(),
             CategoryFragment())

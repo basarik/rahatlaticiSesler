@@ -8,6 +8,8 @@ import org.jetbrains.anko.uiThread
 
 /**
  * Created by bkubuzcu on 28/09/18.
+ * this is LocalFavouriteRepositoryImpl.
+ * service calls and database operations are performed here.
  */
 class LocalFavouriteRepositoryImpl(private val dao: SongDao) : LocalFavouriteRepository {
     override fun delete(song: Song) {
@@ -45,6 +47,9 @@ interface LocalFavouriteRepository {
     fun delete(song: Song)
 }
 
+/**
+ * listener returns the results after the asynchronous operation has finished.
+ */
 interface OnLocalFavouritesListener {
     fun onGetLocalFavourites(list: List<Song>)
 }

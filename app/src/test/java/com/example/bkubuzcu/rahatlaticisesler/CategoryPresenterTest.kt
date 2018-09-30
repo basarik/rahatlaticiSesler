@@ -10,11 +10,21 @@ import org.junit.Test
 
 /**
  * Created by bkubuzcu on 26/09/18.
+ * this is CategoryPresenterTest.
  */
 class CategoryPresenterTest {
 
+    /**
+     * mock view
+     */
     private val view = mock<CategoryContract.View>()
+    /**
+     * mock repository
+     */
     private val repository = MockCategoryRepository()
+    /**
+     * category presenter
+     */
     private var presenter = CategoryPresenter(repository)
 
     @Before
@@ -22,6 +32,9 @@ class CategoryPresenterTest {
         presenter.attach(view)
     }
 
+    /**
+     * category success scenario
+     */
     @Test
     fun categoryListFail() {
         repository.isSuccess = false
@@ -32,6 +45,9 @@ class CategoryPresenterTest {
         verify(view).onError(any())
     }
 
+    /**
+     * category fail scenario
+     */
     @Test
     fun categoryListSuccess() {
         repository.isSuccess = true

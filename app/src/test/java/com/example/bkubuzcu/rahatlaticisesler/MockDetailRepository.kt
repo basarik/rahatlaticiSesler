@@ -8,6 +8,7 @@ import com.example.bkubuzcu.rahatlaticisesler.ui.detail.DetailRepository
 
 /**
  * Created by bkubuzcu on 28/09/18.
+ * this is MockDetailRepository.
  */
 class MockDetailRepository : DetailRepository {
     var isSuccess = true

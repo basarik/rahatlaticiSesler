@@ -1,62 +1,62 @@
 [
   {
     "id": 1,
-    "title": "Mozart: Twinkle Twinkle Little Star Variations K.265",
+    "title": "bird Sample 1",
     "category":0,
-    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/LudovicoEinaudi-Experience.mp3"
+    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/birdSample.mp3"
   },
   {
     "id": 2,
-    "title": "London Philharmonic Orchestra - Swan Lake Suite, Op. 20 Scéne",
+    "title": "bird Sample 2",
     "category":0,
-    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/LudovicoEinaudi-Experience.mp3"
+    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/birdSample.mp3"
   },
   {
     "id": 3,
-    "title": "Scent of a woman - Tango : Por Una Cabeza - John Williams",
+    "title": "piano Sample 1",
     "category":1,
-    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/LudovicoEinaudi-Experience.mp3"
+    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/pianoSample.mp3"
   },
   {
     "id": 4,
-    "title": "Caruso - Luciano Pavarotti & Lucio Dalla",
+    "title": "piano Sample 2",
     "category":1,
-    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/LudovicoEinaudi-Experience.mp3"
+    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/pianoSample.mp3"
   },
   {
     "id": 5,
-    "title": "Ludovico Einaudi - Divenire",
+    "title": "piano Sample 3",
     "category":1,
-    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/LudovicoEinaudi-Experience.mp3"
+    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/pianoSample.mp3"
   },
   {
     "id": 6,
-    "title": "London Philharmonic Orchestra, London Philharmonic Choir, The London Chorus and David Parry, David Parry",
+    "title": "piano Sample 4",
     "category":1,
-    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/LudovicoEinaudi-Experience.mp3"
+    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/pianoSample.mp3"
   },
   {
     "id": 7,
-    "title": "Pieter Schoeman The Four Seasons Op 8 Spring Allegro",
+    "title": "nature Sample 1",
     "category":2,
-    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/LudovicoEinaudi-Experience.mp3"
+    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/natureSample.mp3"
   },
   {
     "id": 8,
-    "title": "Ludovico Einaudi - Fly",
+    "title": "nature Sample 2",
     "category":2,
-    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/LudovicoEinaudi-Experience.mp3"
+    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/natureSample.mp3"
   },
   {
     "id": 9,
-    "title": "Game of Thrones Main Theme (Ramin Djawadi) — Piano Cover",
+    "title": "nature Sample 3",
     "category":2,
-    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/LudovicoEinaudi-Experience.mp3"
+    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/natureSample.mp3"
   },
   {
     "id": 10,
-    "title": "Ludovico Einaudi - Experience",
-    "category":0,
-    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/LudovicoEinaudi-Experience.mp3"
+    "title": "nature Sample 4",
+    "category":2,
+    "url": "https://raw.githubusercontent.com/basarik/rahatlaticiSesler/master/data/natureSample.mp3"
   }
 ]

@@ -25,6 +25,9 @@ class LocalFavouriteRepositoryImpl(private val dao: SongDao) : LocalFavouriteRep
     override fun getFavourites(listener: OnLocalFavouritesListener) {
         doAsync {
             val list = dao.all
+            list.forEach {
+                it.isPlay = false
+            }
             uiThread {
                 listener.onGetLocalFavourites(list)
                 App.instance.globalFavourites.let {

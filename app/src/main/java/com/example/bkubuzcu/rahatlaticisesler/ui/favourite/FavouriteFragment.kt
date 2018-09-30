@@ -76,6 +76,10 @@ class FavouriteFragment : BaseFragment(), FavouriteContract.View, OnItemClickLis
         localSongList.remove(song)
 
         recyclerView.adapter.notifyDataSetChanged()
+
+        if (song.isPlay){
+            mediaPlayerManager.release()
+        }
     }
 
     override fun onGetFavourites(favouriteList: List<Song>) {

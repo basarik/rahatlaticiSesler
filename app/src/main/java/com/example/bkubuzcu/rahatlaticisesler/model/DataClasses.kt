@@ -22,6 +22,5 @@ data class Song(
         var isFavourite: Boolean,
         @ColumnInfo(name = "url")
         val url: String,
-        @ColumnInfo(name = "isPlay")
         var isPlay: Boolean
 )
